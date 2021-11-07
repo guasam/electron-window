@@ -7,7 +7,7 @@
  *
  * @author  : guasam
  * @project : Electron Window
- * @package : Titlebar Menu Items
+ * @package : Window Controls - Close, Minimize, Maximize (Component)
  */
 
 import classNames from 'classnames';

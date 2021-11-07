@@ -7,7 +7,7 @@
  *
  * @author  : guasam
  * @project : Electron Window
- * @package : Electorn Window Titlebar (Component)
+ * @package : Window Titlebar (Component)
  */
 
 import React, { useEffect, createRef, useState } from 'react';
