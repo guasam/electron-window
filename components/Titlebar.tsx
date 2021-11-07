@@ -56,7 +56,7 @@ const Titlebar: React.FC<Props> = (props) => {
         menusRef[activeMenuIndex].current &&
         !menusRef[activeMenuIndex].current.contains(event.target as Node)
       ) {
-        console.log('You clicked outside of me!');
+        // console.log('You clicked outside of me!');
         closeActiveMenu();
         setOutsider(true);
       }
@@ -64,12 +64,12 @@ const Titlebar: React.FC<Props> = (props) => {
 
     if (activeMenuIndex != null) {
       document.addEventListener('mousedown', handleClickOutside);
-      console.log('added event');
+      // console.log('added event');
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      console.log('remove event');
+      // console.log('remove event');
     };
   }, [activeMenuIndex, menusRef]);
 
