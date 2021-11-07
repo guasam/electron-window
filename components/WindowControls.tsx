@@ -15,14 +15,17 @@ import React from 'react';
 import context from '../titlebarContextApi';
 
 type Props = {
-  arch: string;
+  platform: string;
   tooltips?: boolean;
 };
 
 const WindowControls: React.FC<Props> = (props) => {
   return (
     <section
-      className={classNames('window-titlebar-controls', `type-${props.arch}`)}
+      className={classNames(
+        'window-titlebar-controls',
+        `type-${props.platform}`,
+      )}
     >
       <div
         className='control minimize'

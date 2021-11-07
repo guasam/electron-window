@@ -17,14 +17,16 @@ import logo from '@assets/images/logo.png';
 type Props = {
   title?: string;
   borderColor?: string;
-  arch: 'windows' | 'mac';
+  platform: 'windows' | 'mac';
 };
 
 type Context = {
-  arch: 'windows' | 'mac';
+  platform: 'windows' | 'mac';
 };
 
-export const WindowContext = React.createContext<Context>({ arch: 'windows' });
+export const WindowContext = React.createContext<Context>({
+  platform: 'windows',
+});
 
 const WindowFrame: React.FC<Props> = (props) => {
   const itsRef = useRef<HTMLDivElement>(null);
@@ -41,7 +43,7 @@ const WindowFrame: React.FC<Props> = (props) => {
   }, []);
 
   return (
-    <WindowContext.Provider value={{ arch: props.arch }}>
+    <WindowContext.Provider value={{ platform: props.platform }}>
       {/* Reference creator */}
       <div className='start-electron-window' ref={itsRef}></div>
       {/* Window Titlebar */}

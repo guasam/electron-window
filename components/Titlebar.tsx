@@ -192,7 +192,7 @@ const Titlebar: React.FC<Props> = (props) => {
         })}
       </section>
 
-      <WindowControls arch={windowContext.arch} tooltips={true} />
+      <WindowControls platform={windowContext.platform} tooltips={true} />
     </div>
   );
 };
