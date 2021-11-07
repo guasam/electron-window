@@ -33,7 +33,11 @@ const WindowFrame: React.FC<Props> = (props) => {
     const { parentElement } = itsRef.current;
     parentElement.classList.add('has-electron-window');
     parentElement.classList.add('has-border');
-    parentElement.style.borderColor = props.borderColor ?? '#c7c7c70d';
+
+    // Apply border color if prop given
+    if (props.borderColor) {
+      parentElement.style.borderColor = props.borderColor;
+    }
   }, []);
 
   return (
@@ -46,8 +50,8 @@ const WindowFrame: React.FC<Props> = (props) => {
         mode='centered-title'
         icon={logo}
       />
-      {/* Window Children (Application to render) */}
-      {props.children}
+      {/* Window Content (Application to render) */}
+      <div className='window-content'>{props.children}</div>
     </WindowContext.Provider>
   );
 };

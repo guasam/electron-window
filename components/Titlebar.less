@@ -1,6 +1,18 @@
+/**
+ * Copyright (c) 2021, Guasam
+ *
+ * This software is provided "as-is", without any express or implied warranty. In no event
+ * will the authors be held liable for any damages arising from the use of this software.
+ * Read the LICENSE file for more details.
+ *
+ * @author  : guasam
+ * @project : Electron Window
+ * @package : Window Components Stylesheet
+*/
+
 @titlebar-baseSize: 16px;
-@titlebar-height: 32px;
-@titlebar-bg: #1e252e;
+@titlebar-height: 28px;
+@titlebar-bg: #171b21;
 @titlebar-iconSize: 16px;
 @em: @titlebar-baseSize*1em;
 
@@ -21,7 +33,13 @@
 // Stylesheet
 //-----------------------------------------
 
-.titlebar {
+.window-content {
+  position: relative;
+  overflow: auto;
+  flex: 1;
+}
+
+.window-titlebar {
   .flex-strech();
   font-size: @titlebar-baseSize;
   height: @titlebar-height;
@@ -136,6 +154,7 @@
     right: 0;
     top: 0;
     bottom: 0;
+    color: #969799;
 
     &.type-windows {
       .control {
@@ -151,6 +170,7 @@
         }
         &:hover {
           background: #242d38;
+          color: #d8d9db;
         }
       }
     }

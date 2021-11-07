@@ -126,9 +126,9 @@ const Titlebar: React.FC<Props> = (props) => {
   }
 
   return (
-    <div className='titlebar'>
+    <div className='window-titlebar'>
       {props.icon ? (
-        <section className='titlebar-icon'>
+        <section className='window-titlebar-icon'>
           <img src={props.icon} />
         </section>
       ) : (
@@ -136,7 +136,7 @@ const Titlebar: React.FC<Props> = (props) => {
       )}
 
       <section
-        className={classNames('titlebar-content', {
+        className={classNames('window-titlebar-content', {
           centered: props.mode === 'centered-title',
         })}
       >
@@ -144,7 +144,7 @@ const Titlebar: React.FC<Props> = (props) => {
       </section>
 
       <section
-        className={classNames('titlebar-menu', {
+        className={classNames('window-titlebar-menu', {
           hidden: !menusVisible,
         })}
       >

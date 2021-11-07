@@ -21,7 +21,9 @@ type Props = {
 
 const WindowControls: React.FC<Props> = (props) => {
   return (
-    <section className={classNames('titlebar-controls', `type-${props.arch}`)}>
+    <section
+      className={classNames('window-titlebar-controls', `type-${props.arch}`)}
+    >
       <div
         className='control minimize'
         onClick={() => context.minimize()}
