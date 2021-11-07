@@ -10,12 +10,13 @@
  * @package : Window Titlebar (Component)
  */
 
-import React, { useEffect, createRef, useState } from 'react';
-import titlebarMenus, { TitlebarMenuItem } from '../titlebarMenus';
-import './Titlebar.less';
+import React, { useEffect, createRef, useState, useContext } from 'react';
+import titlebarMenus from '../titlebarMenus';
 import classNames from 'classnames';
 import WindowControls from './WindowControls';
 import context from '../titlebarContextApi';
+import { WindowContext } from './WindowFrame';
+import './Titlebar.less';
 
 type Props = {
   title: string;
@@ -28,6 +29,7 @@ const Titlebar: React.FC<Props> = (props) => {
   const menusRef = titlebarMenus.map(() => createRef<HTMLDivElement>());
   const [outsider, setOutsider] = useState(false);
   const [menusVisible, setMenusVisible] = useState(false);
+  const windowContext = useContext(WindowContext);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -123,16 +125,6 @@ const Titlebar: React.FC<Props> = (props) => {
     }
   }
 
-  function handleMenuItemMouseEnter(
-    e: React.MouseEvent<HTMLDivElement>,
-    menuItem: TitlebarMenuItem,
-  ) {
-    // Handle submenu of popup menu
-    if (menuItem.items?.length) {
-      const item = e.target as HTMLElement;
-    }
-  }
-
   return (
     <div className='titlebar'>
       {props.icon ? (
@@ -186,9 +178,6 @@ const Titlebar: React.FC<Props> = (props) => {
                         handleAction(menuItem.action, menuItem.value)
                       }
                       onMouseDown={(e) => e.preventDefault()}
-                      onMouseEnter={(e) =>
-                        handleMenuItemMouseEnter(e, menuItem)
-                      }
                     >
                       <div className='popup-item-name'>{menuItem.name}</div>
                       <div className='popup-item-shortcut'>
@@ -203,7 +192,7 @@ const Titlebar: React.FC<Props> = (props) => {
         })}
       </section>
 
-      <WindowControls type='mac' tooltips={true} />
+      <WindowControls arch={windowContext.arch} tooltips={true} />
     </div>
   );
 };
