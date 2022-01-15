@@ -28,7 +28,7 @@ const Titlebar: React.FC<Props> = (props) => {
   const [activeMenuIndex, setActiveMenuIndex] = useState(null);
   const menusRef = titlebarMenus.map(() => createRef<HTMLDivElement>());
   const [outsider, setOutsider] = useState(false);
-  const [menusVisible, setMenusVisible] = useState(false);
+  const [menusVisible, setMenusVisible] = useState(true);
   const windowContext = useContext(WindowContext);
 
   useEffect(() => {
