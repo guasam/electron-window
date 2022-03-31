@@ -18,21 +18,15 @@ import context from '../titlebarContextApi';
 import { WindowContext } from './WindowFrame';
 import './Titlebar.less';
 
-type Props = {
-  title: string;
-  mode: 'centered-title';
-  icon?: string;
-};
-
-const Titlebar: React.FC<Props> = (props) => {
+const Titlebar = (props) => {
   const [activeMenuIndex, setActiveMenuIndex] = useState(null);
-  const menusRef = titlebarMenus.map(() => createRef<HTMLDivElement>());
+  const menusRef = titlebarMenus.map(() => createRef());
   const [outsider, setOutsider] = useState(false);
   const [menusVisible, setMenusVisible] = useState(true);
   const windowContext = useContext(WindowContext);
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e) => {
       if (e.repeat) return; // Prevent repeatation of toggle when key holding
       if (e.altKey) {
         // Hiding menus? close active menu popup
@@ -51,10 +45,10 @@ const Titlebar: React.FC<Props> = (props) => {
   }, [menusVisible, menusRef]);
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
+    function handleClickOutside(event) {
       if (
         menusRef[activeMenuIndex].current &&
-        !menusRef[activeMenuIndex].current.contains(event.target as Node)
+        !menusRef[activeMenuIndex].current.contains(event.target)
       ) {
         // console.log('You clicked outside of me!');
         closeActiveMenu();
@@ -73,7 +67,7 @@ const Titlebar: React.FC<Props> = (props) => {
     };
   }, [activeMenuIndex, menusRef]);
 
-  function showMenu(index: number, e: React.MouseEvent<HTMLDivElement>) {
+  function showMenu(index, e) {
     e.stopPropagation();
     e.preventDefault();
 
@@ -92,7 +86,7 @@ const Titlebar: React.FC<Props> = (props) => {
     }
   }
 
-  function onMenuHover(index: number) {
+  function onMenuHover(index) {
     if (activeMenuIndex != null) {
       menusRef[activeMenuIndex].current.classList.toggle('active');
       menusRef[index].current.classList.toggle('active');
@@ -115,9 +109,9 @@ const Titlebar: React.FC<Props> = (props) => {
     }, 200);
   }
 
-  function handleAction(action: string, value: string | number) {
+  function handleAction(action, value) {
     closeActiveMenu();
-    const c: Record<string, CallableFunction> = context;
+    const c = context;
     if (typeof c[action] === 'function') {
       c[action](value);
     } else {

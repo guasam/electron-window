@@ -64,11 +64,9 @@ const titlebarContext = {
   toggle_maximize() {
     ipcRenderer.invoke('window-toggle-maximize');
   },
-  open_url(url: string) {
+  open_url(url) {
     ipcRenderer.invoke('open-url', url);
   },
 };
-
-export type TitlebarContextApi = typeof titlebarContext;
 
 export default titlebarContext;

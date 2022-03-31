@@ -14,12 +14,7 @@ import classNames from 'classnames';
 import React from 'react';
 import context from '../titlebarContextApi';
 
-type Props = {
-  platform: string;
-  tooltips?: boolean;
-};
-
-const WindowControls: React.FC<Props> = (props) => {
+const WindowControls = (props) => {
   return (
     <section
       className={classNames(

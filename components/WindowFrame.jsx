@@ -14,22 +14,12 @@ import React, { useEffect, useRef } from 'react';
 import Titlebar from './Titlebar';
 import logo from '@assets/images/logo.png';
 
-type Props = {
-  title?: string;
-  borderColor?: string;
-  platform: 'windows' | 'mac';
-};
-
-type Context = {
-  platform: 'windows' | 'mac';
-};
-
-export const WindowContext = React.createContext<Context>({
+export const WindowContext = React.createContext({
   platform: 'windows',
 });
 
-const WindowFrame: React.FC<Props> = (props) => {
-  const itsRef = useRef<HTMLDivElement>(null);
+const WindowFrame = (props) => {
+  const itsRef = useRef(null);
 
   useEffect(() => {
     const { parentElement } = itsRef.current;

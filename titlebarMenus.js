@@ -10,20 +10,7 @@
  * @package : Titlebar Menu Items
  */
 
-export type TitlebarMenuItem = {
-  name: string;
-  action?: string;
-  shortcut?: string;
-  value?: string | number;
-  items?: TitlebarMenuItem[];
-};
-
-export type TitlebarMenu = {
-  name: string;
-  items: TitlebarMenuItem[];
-};
-
-const titlebarMenus: TitlebarMenu[] = [
+const titlebarMenus = [
   {
     name: 'File',
     items: [

@@ -10,8 +10,6 @@
  * @package : Titlebar Context API
  */
 
-import { TitlebarContextApi } from './titlebarContext';
-
-const context: TitlebarContextApi = (window as any).electron_window.titlebar;
+const context = window.electron_window.titlebar;
 
 export default context;

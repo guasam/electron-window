@@ -10,9 +10,9 @@
  * @package : Titlebar IPC (Main Process)
  */
 
-import { BrowserWindow, ipcMain, shell } from 'electron';
+import { ipcMain, shell } from 'electron';
 
-export const registerTitlebarIpc = (mainWindow: BrowserWindow) => {
+export const registerTitlebarIpc = (mainWindow) => {
   ipcMain.handle('window-minimize', () => {
     mainWindow.minimize();
   });
