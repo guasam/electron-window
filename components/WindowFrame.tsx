@@ -18,6 +18,7 @@ type Props = {
   title?: string;
   borderColor?: string;
   platform: 'windows' | 'mac';
+  children: React.ReactNode;
 };
 
 type Context = {
